@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center  mb-5">
   <div class="mx-width mt-4">
     <form [formGroup]="formGroup">
       <div class="form-group">
@@ -19,13 +19,14 @@
       </div>
       <div class="form-group">
         <label for="loc">Location</label>
-        <input type="text" class="form-control" id="loc" aria-describedby="locHelp" placeholder="Select your location" formControlName="loc">
+        <!-- <input type="text" class="form-control" id="loc" aria-describedby="locHelp" placeholder="Select your location" formControlName="loc"> -->
+        <app-gmap [searchControl]="formGroup.get('loc')"></app-gmap>
         <small id="locHelp" class="form-text text-muted">Select your location using this map</small>
       </div>
       <div class="d-flex flex-column">
         <button type="button" class="btn btn-outline-primary mr-2" (click)="save()" (mousedown)="high=true" (mouseup)="high=false">Save</button>
       </div>
-      <div class="d-flex justify-content-center mb-5" *ngIf="formGroup.invalid">
+      <div class="d-flex justify-content-center" *ngIf="formGroup.invalid">
         <small id="locHelp" class="form-text text-muted ani" [ngClass]="{'expand': high===true}">Fields highlited in <span class="text-danger">red</span> color are mandatory fields</small>
       </div>
     </form>
